@@ -1,13 +1,15 @@
 pipeline {
-  agent any
-  tools { 
-        maven 'Maven_3_5_2'  
-    }
-   stages{
-    stage('CompileandRunSonarAnalysis') {
-            steps {	
-		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=asgbuggywebapp -Dsonar.organization=asgbuggywebapp -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=9325586a8f1d1adf470b908a46156f5844'
-			}
-        } 
-  }
+      agent any
+      tools{
+            Maven_3_5_2
+      }
+
+      stages{
+            stage('ComplieandRunSonar')
+            {
+                  steps{
+                        sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=buggyProject -Dsonar.organization=buggyWebApp_pramod -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=2da80038c47581ae151ae805a7a2e4d755077af7'
+                  }
+            }
+      }
 }
